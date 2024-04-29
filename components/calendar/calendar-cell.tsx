@@ -52,7 +52,7 @@ export function CalendarCell({
 							: "cursor-pointer bg-gray-3",
 						// Focus ring, visible while the cell has keyboard focus.
 						isFocusVisible &&
-							"ring-2 group-focus:z-2 ring-gray-12 ring-offset-2",
+							"ring-1 group-focus:z-2 ring-gray-12 ring-offset-1",
 						// Darker selection background for the start and end.
 						isSelected && "bg-gray-12 text-gray-1",
 						// Hover state for non-selected cells.
@@ -62,7 +62,12 @@ export function CalendarCell({
 				>
 					{formattedDate}
 					{isDateToday && (
-						<div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-1/2 size-1.5 bg-gray-12 rounded-full" />
+						<div
+							className={cn(
+								"absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-1/2 size-1.5 bg-gray-12 rounded-full",
+								isSelected && "bg-gray-1",
+							)}
+						/>
 					)}
 				</div>
 			</div>
