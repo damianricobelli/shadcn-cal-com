@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import {} from "@internationalized/date";
 import { Star } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
 
 export default function Home() {
@@ -33,7 +34,9 @@ export default function Home() {
 				</div>
 			</div>
 			<div className="my-4">
-				<Demo />
+				<Suspense>
+					<Demo />
+				</Suspense>
 			</div>
 		</main>
 	);
