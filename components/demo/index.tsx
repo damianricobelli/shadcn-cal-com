@@ -7,6 +7,7 @@ import {
 	today,
 } from "@internationalized/date";
 import type { DateValue } from "@react-aria/calendar";
+import { useLocale } from "@react-aria/i18n";
 import { CalendarIcon, Clock4 } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -31,6 +32,7 @@ import { timeZones } from "./time-zones";
 
 export function Demo() {
 	const router = useRouter();
+	const { locale } = useLocale();
 
 	const searchParams = useSearchParams();
 	const dateParam = searchParams.get("date");
@@ -46,13 +48,13 @@ export function Demo() {
 
 	const [dayNumber, dayName] = date
 		.toDate(timeZone)
-		.toLocaleDateString("en-US", {
+		.toLocaleDateString(locale, {
 			weekday: "short",
 			day: "numeric",
 		})
 		.split(" ");
 
-	const weeksInMonth = getWeeksInMonth(focusedDate as DateValue, "en-US");
+	const weeksInMonth = getWeeksInMonth(focusedDate as DateValue, locale);
 
 	const handleChangeDate = (date: DateValue) => {
 		setDate(date as CalendarDate);
@@ -101,7 +103,7 @@ export function Demo() {
 							<div className="flex items-center text-gray-12">
 								<CalendarIcon className="size-4 mr-2" />
 								<p className="text-sm font-semibold">
-									{new Date(slotParam as string).toLocaleString("en-US")}
+									{new Date(slotParam as string).toLocaleString(locale)}
 								</p>
 							</div>
 						)}
