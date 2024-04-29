@@ -130,9 +130,13 @@ export function Demo() {
 									{timeZone.replace(/_/g, " ").split("(")[0].trim()}
 								</SelectValue>
 							</SelectTrigger>
-							<SelectContent className="w-fit">
+							<SelectContent className="w-fit dark:bg-gray-5">
 								{timeZones.map((timeZone) => (
-									<SelectItem key={timeZone.label} value={timeZone.tzCode}>
+									<SelectItem
+										key={timeZone.label}
+										value={timeZone.tzCode}
+										className="dark:focus:bg-gray-2"
+									>
 										{timeZone.label.replace(/_/g, " ")}
 									</SelectItem>
 								))}
